@@ -12,5 +12,5 @@ func (conn SplunkConnection) Search(search string) (string, error) {
 	response, err := conn.httpPost(fmt.Sprintf("%s/services/search/jobs", conn.BaseURL), &data)
 	var searchResponse SearchSubmitResult
 	xml.Unmarshal([]byte(response), &searchResponse)
-	return response, err
+	return searchResponse.Sid, err
 }
