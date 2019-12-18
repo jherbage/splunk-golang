@@ -14,6 +14,8 @@ func (conn SplunkConnection) Search(search string) (string, error) {
 	err = xml.Unmarshal([]byte(response), &searchResponse)
 	if err != nil {
 		fmt.Println("got an error")
+	} else {
+		fmt.Println("no error")
 	}
 	return searchResponse.Sid, err
 }
